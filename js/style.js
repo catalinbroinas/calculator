@@ -39,9 +39,6 @@ function operate(operate, num1, num2)
     }
 }
 
-let num1 = prompt('Introduce the first number.');
-let num2 = prompt('Introduce the second number.');
-
 const container = document.querySelector('.container');
 const test = document.createElement('p');
 test.classList.add('text');
