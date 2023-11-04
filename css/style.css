@@ -2,7 +2,7 @@ body
 {
     box-sizing: border-box;
     margin: 0;
-    padding: 3rem;
+    padding: 0;
     font-family: Arial, Verdana, sans-serif;
 }
 * 
@@ -16,15 +16,61 @@ body
 /* Layout */
 .container
 {
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 2rem;
+    background-image: url('../img/desk.jpg');
+}
+.calculator
+{
+    background-color: lightgray;
+    padding: 0.5rem;
+    margin-top: 3rem;
+    margin-left: 14rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.calculator-display
+{
+    display: flex;
+    padding: 1.5rem 2rem;
+    font-size: 2rem;
+    justify-content: right;
+    background-color: white;
+}
+.row
+{
+    display: flex;
+    flex-flow: row nowrap;
+}
+.btn
+{
+    width: 6rem;
+    flex-grow: 0;
+    background-color: blue;
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 1px solid lightgray;
+}
+.btn:hover,
+.btn:active
+{
+    background-color: darkblue;
+}
+.equal
+{
+    flex-grow: 1;
 }
 
 /* Typography */
 .page-title
 {
+    width: 100%;
+    position: fixed;
+    top: 3rem;
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
