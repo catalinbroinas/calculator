@@ -18,6 +18,23 @@ function divide(num1, num2)
     return parseInt(num1) / parseInt(num2);
 }
 
+function setNum1(value)
+{
+    const calcDisplay = document.querySelector('#calculator-display'); 
+    let initValue = Number.parseFloat(calcDisplay.textContent);
+
+    if(initValue === 0)
+    {
+        calcDisplay.textContent = value;    
+    }
+    else
+    {
+        calcDisplay.textContent = initValue + value;
+    }
+    
+    return calcDisplay.textContent;
+}
+
 function operate(operate, num1, num2)
 {
     switch(operate)
@@ -39,8 +56,10 @@ function operate(operate, num1, num2)
     }
 }
 
-const container = document.querySelector('.container');
-const test = document.createElement('p');
-test.classList.add('text');
-test.textContent = `Result of the add operation is ${operate('divide', num1, num2)}`;
-container.appendChild(test);
+const buttons = document.querySelectorAll('.numeric');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        console.log(setNum1(event.target.value));
+    });
+});
