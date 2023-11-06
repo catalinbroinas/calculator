@@ -43,6 +43,13 @@ function getNum1()
     return Number.parseFloat(numValue);
 }
 
+function setOperation(value)
+{
+    let operator = value;
+    
+    return operator;
+}
+
 function operate(operate, num1, num2)
 {
     switch(operate)
@@ -74,7 +81,7 @@ numbers.forEach((number) => {
 });
 
 operators.forEach((operator) => {
-    operator.addEventListener('click', () => {
-        console.log(getNum1());
+    operator.addEventListener('click', (event) => {
+        console.log(setOperation(event.target.value));
     });
 });
