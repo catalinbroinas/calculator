@@ -32,7 +32,15 @@ function setNum1(value)
         calcDisplay.textContent = initValue + value;
     }
     
-    return calcDisplay.textContent;
+    return Number.parseFloat(calcDisplay.textContent);
+}
+
+function getNum1()
+{
+    const calcDisplay = document.querySelector('#calculator-display');
+    const numValue = calcDisplay.textContent;
+
+    return Number.parseFloat(numValue);
 }
 
 function operate(operate, num1, num2)
@@ -56,10 +64,17 @@ function operate(operate, num1, num2)
     }
 }
 
-const buttons = document.querySelectorAll('.numeric');
+const numbers = document.querySelectorAll('.numeric');
+const operators = document.querySelectorAll('.operator');
 
-buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-        console.log(setNum1(event.target.value));
+numbers.forEach((number) => {
+    number.addEventListener('click', (event) => {
+        setNum1(event.target.value);
+    });
+});
+
+operators.forEach((operator) => {
+    operator.addEventListener('click', () => {
+        console.log(getNum1());
     });
 });
