@@ -105,9 +105,20 @@ function setResult(operate, num1, num2)
     calculator['num2'] = calcDisplay.textContent;
     num2 = calculator['num2'];
 
-    let result = getResult(operate, num1, num2);
+    if(calculator['operate'] === null)
+    {
+        result = calcDisplay.textContent;
+    }
+    else
+    {
+        result = getResult(operate, num1, num2);
+    }
+
     calcDisplay.textContent = result;
     calculator['num1'] = result;
+    calculator['num2'] = null;
+    calculator['operate'] = null;
+
     return result;
 }
 
@@ -132,10 +143,9 @@ equal.addEventListener('click', () => {
     let num1 = calculator['num1'];
     let operate = calculator['operate'];
     let res = setResult(operate, num1);
-    console.log(operate);
-    console.log(num1);
-    console.log(calculator['num2']);
     console.log(res);
+    console.log(calculator['num2']);
+    console.log(calculator['operate']);
 });
 
 console.log(calculator['num1']);
