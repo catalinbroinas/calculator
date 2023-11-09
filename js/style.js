@@ -71,7 +71,7 @@ function setOperation(value)
     let operator = value;
     calculator['operate'] = value;
     calcDisplay.textContent = value;
-       
+    
     return operator;
 }
 
@@ -95,15 +95,13 @@ function getResult(operate, num1, num2)
             return pow(num1, num2);
             break;
         default:
-            return 'This operate does not exist in this application';
+            return 'Error';
     }
 }
 
 function setResult(operate, num1, num2)
 {
     const calcDisplay = document.querySelector('#calculator-display'); 
-    calculator['num2'] = calcDisplay.textContent;
-    num2 = calculator['num2'];
 
     if(calculator['operate'] === null)
     {
@@ -115,11 +113,15 @@ function setResult(operate, num1, num2)
     }
 
     calcDisplay.textContent = result;
+
+    return result;
+}
+
+function resetValues()
+{
     calculator['num1'] = result;
     calculator['num2'] = null;
     calculator['operate'] = null;
-
-    return result;
 }
 
 numbers.forEach((number) => {
@@ -132,22 +134,28 @@ operators.forEach((operator) => {
     operator.addEventListener('click', (event) => {
         let number = setNumber(event.target.value);
         getNumber(number);
-        calculator['operate'] = setOperation(event.target.value);
-        console.log(calculator['operate']);
-        console.log(calculator['num1']);
-        console.log(calculator['num2']);
+        if(calculator['operate'] === null)
+        {
+            calculator['operate'] = setOperation(event.target.value);
+        }
+        else
+        {
+            let num1 = calculator['num1'];
+            let num2 = calculator['num2'];
+            let operate = calculator['operate'];
+            setResult(operate, num1, num2);
+            resetValues();
+            calculator['operate'] = setOperation(event.target.value);
+        }
     });
 });
 
 equal.addEventListener('click', () => {
+    let number = setNumber(event.target.value);
+    getNumber(number);
     let num1 = calculator['num1'];
+    let num2 = calculator['num2'];
     let operate = calculator['operate'];
-    let res = setResult(operate, num1);
-    console.log(res);
-    console.log(calculator['num2']);
-    console.log(calculator['operate']);
+    setResult(operate, num1, num2);
+    resetValues();
 });
-
-console.log(calculator['num1']);
-console.log(calculator['num2']);
-console.log(calculator['operate']);
