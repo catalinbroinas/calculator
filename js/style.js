@@ -121,7 +121,7 @@ function setResult(operate, num1, num2)
 
 function resetValues()
 {
-    calculator['num1'] = result;
+    calculator['num1'] = null;
     calculator['num2'] = null;
     calculator['operate'] = null;
 }
@@ -130,9 +130,7 @@ function clearDisplay()
 {
     const calcDisplay = document.querySelector('#calculator-display'); 
     calcDisplay.textContent = 0;
-    calculator['num1'] = null;
-    calculator['num2'] = null;
-    calculator['operate'] = null;
+    resetValues();
 }
 
 function removeLastDigit()
@@ -182,8 +180,9 @@ operators.forEach((operator) => {
             let num1 = calculator['num1'];
             let num2 = calculator['num2'];
             let operate = calculator['operate'];
-            setResult(operate, num1, num2);
+            let result = setResult(operate, num1, num2);
             resetValues();
+            calculator['num1'] = result;
             calculator['operate'] = setOperation(event.target.value);
         }
     });
