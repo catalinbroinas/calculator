@@ -1,6 +1,7 @@
 const numbers = document.querySelectorAll('.numeric');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('#equal');
+const clear = document.querySelector('#clear');
 const calculator = {
     num1: null,
     num2: null,
@@ -124,11 +125,22 @@ function resetValues()
     calculator['operate'] = null;
 }
 
+function clearDisplay()
+{
+    const calcDisplay = document.querySelector('#calculator-display'); 
+    calcDisplay.textContent = 0;
+    calculator['num1'] = null;
+    calculator['num2'] = null;
+    calculator['operate'] = null;
+}
+
 numbers.forEach((number) => {
     number.addEventListener('click', (event) => {
         setNumber(event.target.value);
     });
 });
+
+clear.addEventListener('click', clearDisplay);
 
 operators.forEach((operator) => {
     operator.addEventListener('click', (event) => {
