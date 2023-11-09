@@ -3,6 +3,7 @@ const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
 const remove = document.querySelector('#remove');
+const point = document.querySelector('#point');
 const calculator = {
     num1: null,
     num2: null,
@@ -37,13 +38,13 @@ function pow(num1, num2)
 function setNumber(value)
 {
     const calcDisplay = document.querySelector('#calculator-display'); 
-    let initValue = Number.parseFloat(calcDisplay.textContent);
+    let initValue = calcDisplay.textContent;
 
-    if(initValue === 0)
+    if(parseFloat(initValue) === 0)
     {
         calcDisplay.textContent = value;    
     }
-    else if(!Number.isInteger(initValue))
+    else if(Number.isNaN(parseFloat(initValue)))
     {
         calcDisplay.textContent = value;
     }
@@ -52,7 +53,7 @@ function setNumber(value)
        calcDisplay.textContent = initValue + value;
     }
     
-    return Number.parseFloat(calcDisplay.textContent);
+    return parseFloat(calcDisplay.textContent);
 }
 
 function getNumber(value)
@@ -104,18 +105,14 @@ function getResult(operate, num1, num2)
 function setResult(operate, num1, num2)
 {
     const calcDisplay = document.querySelector('#calculator-display'); 
+    let result = calcDisplay.textContent;
 
-    if(calculator['operate'] === null)
-    {
-        result = calcDisplay.textContent;
-    }
-    else
+    if(calculator['operate'] !== null)
     {
         result = getResult(operate, num1, num2);
     }
 
     calcDisplay.textContent = result;
-
     return result;
 }
 
@@ -161,10 +158,14 @@ numbers.forEach((number) => {
     });
 });
 
+point.addEventListener('click', (event) => {
+    const calcDisplay = document.querySelector('#calculator-display');
+    calcDisplay.textContent += event.target.value;
+});
+
 clear.addEventListener('click', clearDisplay);
 remove.addEventListener('click', () => {
-    let rem = removeLastDigit();
-    console.log(rem);
+    removeLastDigit();
 });
 
 operators.forEach((operator) => {
