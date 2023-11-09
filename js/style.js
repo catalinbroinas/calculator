@@ -2,6 +2,7 @@ const numbers = document.querySelectorAll('.numeric');
 const operators = document.querySelectorAll('.operator');
 const equal = document.querySelector('#equal');
 const clear = document.querySelector('#clear');
+const remove = document.querySelector('#remove');
 const calculator = {
     num1: null,
     num2: null,
@@ -134,6 +135,28 @@ function clearDisplay()
     calculator['operate'] = null;
 }
 
+function removeLastDigit()
+{
+    const calcDisplay = document.querySelector('#calculator-display');
+    let initValue = calcDisplay.textContent;
+    
+    if(initValue == 0)
+    {
+        return parseFloat(initValue);
+    }
+
+    let str = initValue.toString();
+    let newValue = 0;
+
+    if(str.length > 1)
+    {
+        newValue = str.substring(0, str.length - 1);
+    }
+
+    calcDisplay.textContent = newValue;
+    return newValue;
+}
+
 numbers.forEach((number) => {
     number.addEventListener('click', (event) => {
         setNumber(event.target.value);
@@ -141,6 +164,10 @@ numbers.forEach((number) => {
 });
 
 clear.addEventListener('click', clearDisplay);
+remove.addEventListener('click', () => {
+    let rem = removeLastDigit();
+    console.log(rem);
+});
 
 operators.forEach((operator) => {
     operator.addEventListener('click', (event) => {
