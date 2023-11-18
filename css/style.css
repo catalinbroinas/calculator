@@ -48,7 +48,7 @@ body
 {
     width: 6rem;
     flex-grow: 0;
-    background-color: blue;
+    background-color: #304FFE;
     color: white;
     padding: 1rem;
     font-size: 1.5rem;
@@ -58,7 +58,18 @@ body
 .btn:hover,
 .btn:active
 {
-    background-color: darkblue;
+    background-color: #536DFE;
+}
+.btn.operator, #remove, #clear, #equal
+{
+    background-color: #6200EA;
+}
+.btn.operator:hover,
+#remove:hover, 
+#clear:hover, 
+#equal:hover
+{
+    background-color: #7C4DFF;
 }
 .equal
 {
