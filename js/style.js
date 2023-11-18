@@ -40,9 +40,16 @@ function setNumber(value)
     const calcDisplay = document.querySelector('#calculator-display'); 
     let initValue = calcDisplay.textContent;
 
-    if(parseFloat(initValue) === 0)
+    if(initValue == 0)
     {
-        calcDisplay.textContent = value;    
+        if(parseFloat(value) >= 0 && parseFloat(value) < 10)
+        {
+            calcDisplay.textContent = value;
+        }
+       else
+       {
+            calcDisplay.textContent = initValue + value;
+       }
     }
     else if(Number.isNaN(parseFloat(initValue)))
     {
