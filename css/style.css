@@ -22,6 +22,8 @@ body
     justify-content: center;
     align-items: center;
     background-image: url('../img/desk.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .calculator
 {
@@ -93,4 +95,36 @@ body
     font-weight: bold;
 }
 
-/* Components */
+/* Device 1600x900 */
+@media only screen and (max-width: 1910px)
+{
+    .calculator
+    {
+        margin: 0 0 0 20%;
+    }
+}
+
+/* Devices 1366x768 */
+@media only screen and (max-width: 1590px)
+{
+    .container
+    {
+        justify-content: center;
+    }
+    .calculator
+    {
+        margin: 15% 0 0;
+    }
+}
+/* Small devices */
+@media only screen and (max-width: 1356px)
+{
+    .container
+    {
+        justify-content: center;
+    }
+    .calculator
+    {
+        margin: 0;
+    }
+}
